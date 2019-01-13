@@ -1,8 +1,18 @@
 <template>
-  <div>
+  <div class="container fullhd">
+    <navbar-app/>
     <nuxt/>
   </div>
 </template>
+
+<script>
+import NavbarApp from '@/components/navbar/Navbar'
+export default {
+  components:{
+    NavbarApp
+  }
+}
+</script>
 
 <style>
 html {
