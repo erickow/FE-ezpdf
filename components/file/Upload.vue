@@ -31,12 +31,16 @@
   export default {
     data() {
       return {
-        file: ""
+        file: "",
+        message: "",
+        error: false
       }
     },
     methods: {
       selectFile() {
         this.file = this.$refs.file.files[0];
+        this.message = "";
+        this.error = false;
       },
       async sendFile() {
         const formData = new FormData();
@@ -44,10 +48,14 @@
         formData.append('file', this.file)
 
         try {
-          await this.$axios.post('/upload', formData);
+          await this.$axios.post('/api/upload', formData);
+          this.message = "File successfuly uploaded";
+          this.error = false;
 
         } catch (err) {
           console.log(err)
+          this.message = "Something went wrong";
+          this.error = true;
         }
 
       }

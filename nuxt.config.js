@@ -49,15 +49,24 @@ module.exports = {
     '@nuxtjs/axios',
     // Doc:https://github.com/nuxt-community/modules/tree/master/packages/bulma
     '@nuxtjs/bulma',
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    '@nuxtjs/proxy'
   ],
   /*
   ** Axios module configuration
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
+    proxy: true,
   },
-
+  proxy: {
+    "/api": {
+     target: "http://localhost:5959/",
+     pathRewrite: { "^/api": "" },
+     changeOrigin: false,
+     prependPath: false
+    }
+  },
   /*
   ** Build configuration
   */
