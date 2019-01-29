@@ -1,6 +1,9 @@
 <template>
   <div class="section">
     <div class="container">
+      <div v-if="message" :class="`message ${error ? 'is-danger' : 'is-success'}`">
+        <div class="message-body">{{ message }}</div>
+      </div>
       <form @submit.prevent="sendFile" enctype="multipart/form-data">
         <div class="field">
           <div class="file is-boxed is-primary">
@@ -38,9 +41,20 @@
     },
     methods: {
       selectFile() {
-        this.file = this.$refs.file.files[0];
-        this.message = "";
-        this.error = false;
+        const FILE = this.$refs.file.files[0];
+        const allowedTypes = ["application/pdf"];
+        const MAX_SIZE = 20000000;
+        const tooLarge = FILE.size > MAX_SIZE;
+
+        if (allowedTypes.includes(FILE.type) && !tooLarge) {
+          this.file = FILE;
+          this.message = "";
+          this.error = false;
+        } else {
+          this.error = true;
+          this.message = tooLarge ? `Too Large, Max size is ${MAX_SIZE/1000000}MB` : "Only PDF are allowed";
+          this.file = "";
+        }
       },
       async sendFile() {
         const formData = new FormData();
@@ -53,8 +67,7 @@
           this.error = false;
 
         } catch (err) {
-          console.log(err)
-          this.message = "Something went wrong";
+          this.message = err.response.data.error;
           this.error = true;
         }
 

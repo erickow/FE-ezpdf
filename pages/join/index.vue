@@ -1,14 +1,14 @@
 <template>
   <div class="container is-fluid">
-    <file-upload/>
+    <multiple-file-upload/>
   </div>
 </template>
 
 <script>
-import FileUpload from '@/components/file/Upload'
+import MultipleFileUpload from '@/components/file/MultipleUpload'
   export default {
     components:{
-      FileUpload
+      MultipleFileUpload
     },
     created() {
     },
