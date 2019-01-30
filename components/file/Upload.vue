@@ -1,31 +1,51 @@
 <template>
   <div class="section">
     <div class="container">
-      <div v-if="message" :class="`message ${error ? 'is-danger' : 'is-success'}`">
+
+      <div v-if="message" :class="`message ${error ? 'is-danger' : 'is-success'} `">
         <div class="message-body">{{ message }}</div>
       </div>
-      <form @submit.prevent="sendFile" enctype="multipart/form-data">
-        <div class="field">
-          <div class="file is-boxed is-primary">
-            <label class="file-label">
-              <input class="file-input" type="file" ref="file" @change="selectFile">
-              <span class="file-cta">
-                <span class="file-icon">
-                  <i class="fas fa-upload"></i>
-                </span>
-                <span class="file-label">
-                  Choose a file..
-                </span>
-              </span>
-              <span v-if="file" class="file-name">{{ file.name }}</span>
-            </label>
-          </div>
-        </div>
 
-        <div class="field">
-          <button class="button is-info">Upload</button>
+      <div class="columns is-3 is-centered">
+        <div class="column is-5">
+          <form @submit.prevent="sendFile" enctype="multipart/form-data">
+            <div class="field">
+              <div class="file is-boxed is-primary is-fullwidth has-text-centered">
+                <label class="file-label">
+                  <input class="file-input" type="file" ref="file" @change="selectFile">
+                  <span class="file-cta">
+                    <span class="file-icon">
+                      <i class="fas fa-upload"></i>
+                    </span>
+                    <span class="file-label ">
+                      Choose a file..
+                    </span>
+                  </span>
+                  <span v-if="file" class="file-name">{{ file.name }}</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="field ">
+              <button class="button is-info is-fullwidth">Upload</button>
+            </div>
+          </form>
         </div>
-      </form>
+        <div v-if="description" class="column is-7">
+          <article class="message is-primary">
+            <div class="message-header">
+              <p>Description</p>
+              <button @click.prevent="resetUpload" class="delete" aria-label="delete"></button>
+            </div>
+            <div class="message-body">
+              <p>Name: {{ description.originalname }}</p>
+              <p>Type: {{ description.mimetype}}</p>
+              <p>Size: {{ description.size/1000000}} MB</p>
+            </div>
+          </article>
+        </div>
+      </div>
+
     </div>
   </div>
 </template>
@@ -36,7 +56,8 @@
       return {
         file: "",
         message: "",
-        error: false
+        error: false,
+        description: ""
       }
     },
     methods: {
@@ -62,15 +83,30 @@
         formData.append('file', this.file)
 
         try {
-          await this.$axios.post('/api/upload', formData);
+          await this.$axios.post('/api/upload', formData)
+            .then(response => {
+              this.description = response.data.file
+            });
           this.message = "File successfuly uploaded";
+          this.resetMessage();
           this.error = false;
 
         } catch (err) {
           this.message = err.response.data.error;
           this.error = true;
         }
-
+      },
+      resetUpload() {
+        this.file = "";
+        this.message = "";
+        this.description = "";
+        this.error = false;
+      },
+      resetMessage() {
+        var self = this;
+        setTimeout(function () {
+          self.message = "";
+        }, 2000);
       }
     }
   }
