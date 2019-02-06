@@ -19,7 +19,7 @@
     created() {},
     data() {
       return {
-
+        file: ''
       }
     }
   }
