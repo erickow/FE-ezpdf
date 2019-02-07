@@ -90,9 +90,12 @@
           this.message = "File successfuly uploaded";
           this.resetMessage();
           this.error = false;
+          this.$store.commit('documents/addFile', this.description)
+          this.$emit('uploadedfile', true);
 
         } catch (err) {
           this.message = err.response.data.error;
+          this.$emit('uploadedfile', false);
           this.error = true;
         }
       },
@@ -101,6 +104,7 @@
         this.message = "";
         this.description = "";
         this.error = false;
+        this.$emit('uploadedfile', false);
       },
       resetMessage() {
         var self = this;

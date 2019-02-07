@@ -28,6 +28,10 @@
             Join pdf
           </a>
 
+          <a class="navbar-item" href="/encrypt">
+            Encrypt pdf
+          </a>
+
           <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link">
               More
