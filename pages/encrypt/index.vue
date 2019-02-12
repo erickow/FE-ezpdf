@@ -20,11 +20,11 @@
                 <article class="media">
                   <div class="media-content">
                     <div class="content">
-                      <form action="">
+                      <form @submit.prevent="encryptFile">
                         <div class="field">
                           <label class="label">Password</label>
                           <div class="control has-icons-left has-icons-right">
-                            <input class="input" type="text" placeholder="Input Password">
+                            <input class="input" type="text" placeholder="Input Password" v-model="passwordFile" required>
                             <span class="icon is-small is-left">
                               <i class="fas fa-lock"></i>
                             </span>
@@ -58,12 +58,45 @@
     created() {},
     data() {
       return {
-        uploaded: false
+        uploaded: false,
+        passwordFile: '',
+        message: '',
+        error: '',
       }
     },
     methods: {
       checkUploaded(data) {
         this.uploaded = data;
+      },
+      async encryptFile() {
+        const formData = new FormData();
+
+        const fileEncrypt = this.$store.state.documents.file.filename;
+        const passwordEncrypt = this.passwordFile;
+
+        try {
+          await this.$axios.get(`/api/encrypt`, 
+            { params: { 
+                name: fileEncrypt, 
+                password: passwordEncrypt
+              },
+              responseType: 'arraybuffer'
+            })
+            .then(response => {
+              console.log(response)
+              let blob = new Blob([response.data], { type: 'application/pdf' } ),
+              url = window.URL.createObjectURL(blob)
+
+              window.open(url);   
+            });
+          this.message = "File successfuly encrypted";
+           
+          this.error = false;
+
+        } catch (err) {
+          this.message = err.response.data.error;
+          this.error = true;
+        }
       }
     }
   }
