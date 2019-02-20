@@ -4,7 +4,7 @@
       <div class="navbar-brand">
         <a class="navbar-item" href="">
           <!-- <img src="" width="112" height="28"> -->
-          <h1>&nbsp;&nbsp;&nbsp;&nbsp;PdfConvert</h1>
+          <h1>&nbsp;&nbsp;&nbsp;&nbsp;EZPDF</h1>
         </a>
 
         <a role="button" class="navbar-burger " aria-label="menu" aria-expanded=" " data-target="navbarHeader">
@@ -20,13 +20,13 @@
             Home
           </a>
 
-          <a class="navbar-item" href="/split">
+          <!-- <a class="navbar-item" href="/split">
             Split pdf
           </a>
 
           <a class="navbar-item" href="/join">
             Join pdf
-          </a>
+          </a> -->
 
           <a class="navbar-item" href="/encrypt">
             Encrypt pdf
@@ -41,7 +41,7 @@
               <a class="navbar-item">
                 About
               </a>
-              <a class="navbar-item">
+              <a class="navbar-item" href="/term-of-service">
                 Term of Service
               </a>
               <hr class="navbar-divider">
