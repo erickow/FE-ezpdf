@@ -14,18 +14,93 @@
               <h2 class="subtitle column is-10">
                 Easily Split and join your pdf files
               </h2>
-              <div class="columns button-custom is-10">
-                <!-- <div class="column is-5">
+              <div class="columns is-multiline button-custom">
+                <div class="column is-5">
                   <a href="/split" class="button is-danger is-inverted is-outlined is-large is-fullwidth">
                     Split PDF</a>
                 </div>
                 <div class="column is-5">
                   <a href="/join" class="button is-danger is-inverted is-outlined is-large is-fullwidth">Join PDF</a>
-                </div> -->
-                <div class="column is-half">
+                </div>
+                <div class="column is-5">
                   <a href="/encrypt" class="button is-danger is-inverted is-outlined is-large is-fullwidth">Encrypt PDF</a>
                 </div>
+                <div class="column is-5">
+                  <a href="/" class="button is-danger is-inverted is-outlined is-large is-fullwidth">More...</a>
+                </div>
               </div>
+            </div>
+          </div>
+          <div class="columns rightside-home">
+            <div class="column is-hidden-desktop">
+              <img src="@/assets/image/pdf-split.png" alt="pdf image">
+            </div>
+            <div class="column rightside-home has-text-right">
+              <h1 class="title column">
+                Split PDF 
+              </h1>
+              <h2 class="subtitle column">
+                do you want to split a pdf to some piece easily ? 
+              </h2>
+              <div class="columns is-10">
+                <div class="column">
+
+                </div>
+                <div class="column is-5 ">
+                  <a href="/split" class="button is-danger is-inverted is-outlined is-large is-fullwidth">
+                    Let's do it !  
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="column is-hidden-touch">
+              <img src="@/assets/image/pdf-split.png" alt="pdf image">
+            </div>
+          </div>
+          <div class="columns rightside-home">
+            <div class="column is-5">
+              <img src="@/assets/image/pdf-join.png" alt="pdf image">
+            </div>
+            <div class="column rightside-home has-text-left">
+              <h1 class="title column">
+                Join PDF 
+              </h1>
+              <h2 class="subtitle column ">
+                Have to much file pdf and want join them to one file ?
+              </h2>
+              <div class="columns is-10">
+                <div class="column is-5">
+                  <a href="/join" class="button is-danger is-inverted is-outlined is-large is-fullwidth">
+                   Click this !
+                  </a>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+          <div class="columns rightside-home">
+            <div class="column is-5 is-hidden-desktop">
+              <img src="@/assets/image/pdf-encrypt.png" alt="pdf image">
+            </div>
+            <div class="column rightside-home has-text-right">
+              <h1 class="title column">
+                Encrypt PDF 
+              </h1>
+              <h2 class="subtitle column">
+                Do you feel insecure? want to protect your pdf file?
+              </h2>
+              <div class="columns is-10">
+                <div class="column">
+
+                </div>
+                <div class="column is-5">
+                  <a href="/encrypt" class="button is-danger is-inverted is-outlined is-large is-fullwidth">
+                    Yes I want !</a>
+                </div>
+              </div>
+            </div>
+            <div class="column is-5 is-hidden-touch">
+              <img src="@/assets/image/pdf-encrypt.png" alt="pdf image">
             </div>
           </div>
         </div>
@@ -63,7 +138,7 @@
 
   @media screen and (min-width: 769px) {
     .rightside-home {
-      margin-top: 10vh;
+      margin-top: 15vh;
     }
   }
 
@@ -72,7 +147,7 @@
       font-size: 3.5rem;
     }
     .button-custom{
-      margin-left: 23%;
+      margin-left: auto;
       margin-right: auto;
     }
   }

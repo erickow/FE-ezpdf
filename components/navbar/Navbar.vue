@@ -20,13 +20,13 @@
             Home
           </a>
 
-          <!-- <a class="navbar-item" href="/split">
+          <a class="navbar-item" href="/split">
             Split pdf
           </a>
 
           <a class="navbar-item" href="/join">
             Join pdf
-          </a> -->
+          </a>
 
           <a class="navbar-item" href="/encrypt">
             Encrypt pdf
@@ -38,7 +38,7 @@
             </a>
 
             <div class="navbar-dropdown">
-              <a class="navbar-item">
+              <a class="navbar-item" href="/about">
                 About
               </a>
               <a class="navbar-item" href="/term-of-service">
@@ -46,7 +46,7 @@
               </a>
               <hr class="navbar-divider">
               <a class="navbar-item">
-                Report an issue
+                Report an issue (on progress)
               </a>
             </div>
           </div>
